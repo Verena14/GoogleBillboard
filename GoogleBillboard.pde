@@ -2,7 +2,7 @@ public final static String e = "2.7182818284590452353602874713526624977572470936
 public void setup()
 {
   //your code here
-  ArrayList <Double> digits = new ArrayList <Double>();
+  ArrayList <Double> digits1 = new ArrayList <Double>();
   String temp1;
   double temp2;
   int i = 0;
@@ -10,11 +10,38 @@ public void setup()
   {
     temp1 = e.substring(i+2,i+12);
     temp2 = Double.parseDouble(temp1);
-    digits.add(temp2);
-    if( isPrime(digits.get(i)) )
+    digits1.add(temp2);
+    if( isPrime(digits1.get(i)) )
     {
-      System.out.println(digits.get(i));
+      System.out.println("first 10-digit prime found in consecutive digits of 'e': " + String.format( "%.0f", digits1.get(i) ) );
       break;
+    }
+    i++;
+  }
+  
+  int z = 0;
+  i = 0;
+  ArrayList <Double> digits2 = new ArrayList <Double>();
+  while(true)
+  {
+    temp1 = e.substring(i+2,i+12);
+    temp2 = Double.parseDouble(temp1);
+    digits2.add(temp2);
+    int sum = 0;
+    for(int a = i+2; a < i+12; a++)
+    {
+      temp1 = e.substring(a, a+1);
+      temp2 = Double.parseDouble(temp1);
+      sum += temp2;
+    }
+    if(sum == 49)
+    {
+      z++;
+      System.out.println("f(" + z + ")= " + String.format( "%.0f", digits2.get(i) ) );
+      if(z == 5)
+      {
+        break;
+      }
     }
     i++;
   }
